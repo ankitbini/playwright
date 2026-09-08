@@ -13,3 +13,7 @@ export const getJsonFromFile = <T = Record<string, string>> (filePath: string): 
     const json = readFileSync(resolve(process.cwd(), filePath), 'utf8')
     return JSON.parse(json) as T
 }
+
+export const envNumber = (key: string): number => {
+    return Number(env(key))
+}

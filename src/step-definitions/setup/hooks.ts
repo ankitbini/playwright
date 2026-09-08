@@ -1,9 +1,9 @@
-import { Before, After } from "@cucumber/cucumber";
+import { Before, After, setDefaultTimeout } from "@cucumber/cucumber";
 import type { ITestCaseHookParameter } from "@cucumber/cucumber"
 import { ScenarioWorld } from "./world.js";
-import { env } from '../../env/parseEnv.js'
+import { env, envNumber } from '../../env/parseEnv.js'
 
-
+setDefaultTimeout(envNumber('SCRIPT_TIMEOUT'))
 Before(async function(this: ScenarioWorld, scenario) {
     console.log(`Running cucumber scenario ${scenario.pickle.name}`)
     const contextOptions= {
