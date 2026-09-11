@@ -1,6 +1,6 @@
 Feature: As a User I should be able to nevagate to home page
 
-    @dev
+    
     @smoke
     @regression
     Scenario: I should able to see the contacts
