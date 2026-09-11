@@ -6,17 +6,19 @@ import { waitFor } from "../../support/wait-for-behavior.js";
 
 
 Then(
-    /^the "([^"]*)" should( not)? be displayed$/,
-    async function(this: ScenarioWorld, elementKey: string, negate?: string) {
+    /^the "([^"]*)" radio button should( not)? be checked$/,
+    async function(this: ScenarioWorld, elementKey: ElementKey, negate: boolean) {
         const {
-            screen: { page },
+            screen: {page},
             globalConfig,
         } = this;
-        console.log(`the ${elementKey} should ${negate ? "not" : ""} be displayed`)
+        console.log(`The ${elementKey} radio button should${negate ? " not" : ""} be checked`)
+        
         const elementIdentifire = getElementLocator( page, elementKey, globalConfig)
         await waitFor(async () => {
-            const isElementVisiable = (await page.$(elementIdentifire)) != null
-            return isElementVisiable === !negate;
+            const isElementChecked = await page.isChecked(elementIdentifire);
+            return isElementChecked === !negate;
         });
+
     }
 )

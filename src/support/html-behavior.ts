@@ -26,3 +26,11 @@ export const selectValue = async (
     await page.focus(elementIdentifire);
     await page.selectOption(elementIdentifire, option);
 }
+
+export const checkElement = async (
+    page: Page,
+    elementIdentifire: ElementLocator,
+): Promise<void> => {
+    await page.focus(elementIdentifire);
+    await page.check(elementIdentifire);
+}

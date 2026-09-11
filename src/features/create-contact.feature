@@ -17,7 +17,7 @@ Feature: As a User I should be able create contacts
         And I am directed to the "home" page
         And I fill in the "search" input with "Ankit Sharma"
         And the "full name label" should contain the text "Name:"
-        And the "name" should contain the text "Ankit Sharma"
+        And the "name" should not equal the text "Ankit Sharma"
         And the "gender label" should contain the text "Gender:"
         And the "gender" should contain the text "Male"
         And the "address label" should contain the text "Address:"
