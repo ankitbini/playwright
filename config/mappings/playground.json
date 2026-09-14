@@ -20,5 +20,7 @@
     "address": "[data-id=\"address\"]",
     "edit": "[data-id=\"edit-button\"]",
     "delete": "[data-id=\"delete-button\"]",
-    "full name label": "[data-id=\"full-name-label\"]"
+    "full name label": "[data-id=\"full-name-label\"]",
+    "new tab": "[data-id=\"new-tab-button\"]",
+    "new window": "[data-id=\"open-window-button\"]"
 }

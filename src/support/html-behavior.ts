@@ -70,3 +70,13 @@ export const inputValueOnIframe = async (
 ): Promise<void> => {
     await elementIframe.fill(elementIdentifire, input);
 }
+
+export const inputValueOnPage = async (
+    pages: Array<Page>,
+    pageIndex: number,
+    elementIdentifire: ElementLocator,
+    inputValue: string
+): Promise<void> => {
+    await pages[pageIndex].focus(elementIdentifire);
+    await pages[pageIndex].fill(elementIdentifire, inputValue);
+}

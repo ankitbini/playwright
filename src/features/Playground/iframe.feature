@@ -1,6 +1,6 @@
 Feature: As a User I can intract with IFrames
 
-    @dev
+    
     @smoke
     @regression
     Scenario: I should intract and assert on IFrames

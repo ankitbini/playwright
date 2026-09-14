@@ -7,7 +7,7 @@ import { getIframeElement } from "../../support/html-behavior.js";
 
 Then(
     /^the "([^"]*)" on the "([^"]*)" iframe should( not)? be displayed$/,
-    async function(this: ScenarioWorld, elementKey: string, iframeName: string, negate?: string) {
+    async function(this: ScenarioWorld, elementKey: string, iframeName: string, negate: string) {
         const {
             screen: { page },
             globalConfig,
