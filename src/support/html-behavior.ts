@@ -45,3 +45,10 @@ export const getValue = async (
     });
     return value;
 }
+
+export const uncheckElement = async (
+    page: Page,
+    elementIdentifire: ElementLocator,
+): Promise<void> => {
+    await page.uncheck(elementIdentifire);
+}
