@@ -1,4 +1,4 @@
-import type { Page } from "playwright";
+import type { Frame, Page } from "playwright";
 import type { ElementLocator } from "../env/global.js";
 
 export const clickElement = async (
@@ -51,4 +51,22 @@ export const uncheckElement = async (
     elementIdentifire: ElementLocator,
 ): Promise<void> => {
     await page.uncheck(elementIdentifire);
+}
+
+export const getIframeElement = async (
+    page: Page,
+    iframeIdentifire: ElementLocator,
+): Promise<Frame | undefined | null> => {
+    await page.waitForSelector(iframeIdentifire);
+    const elementHandle = await page.$(iframeIdentifire);
+    const elementIframe = await elementHandle?.contentFrame();
+    return elementIframe;
+}
+
+export const inputValueOnIframe = async (
+    elementIframe: Frame,
+    elementIdentifire: ElementLocator,
+    input: string
+): Promise<void> => {
+    await elementIframe.fill(elementIdentifire, input);
 }
