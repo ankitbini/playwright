@@ -34,3 +34,14 @@ export const checkElement = async (
     await page.focus(elementIdentifire);
     await page.check(elementIdentifire);
 }
+
+export const getValue = async (
+    page: Page,
+    elementIdentifire: ElementLocator,
+): Promise<string | null> => {
+    await page.focus(elementIdentifire);
+    const value =  await page.$eval<string, HTMLInputElement>(elementIdentifire, el => {
+        return el.value;
+    });
+    return value;
+}
