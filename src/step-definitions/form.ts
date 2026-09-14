@@ -23,7 +23,7 @@ Then(
             if(result){
                 await inputValue(page, elementIdentifire, input)
             }
-            await page.waitForTimeout(3000)
+            //await page.waitForTimeout(3000)
             return result
         });
 

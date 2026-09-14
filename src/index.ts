@@ -39,7 +39,9 @@ const common = `./src/features/**/*.feature \
     --import "src/step-definitions/**/*.ts" \
     --world-parameters '${JSON.stringify(worldParameters)}' \
     -f json:./reports/report.json \
-    --format pretty`;
+    --format pretty \
+    --parallel ${env('PARALLEL')} \
+    --retry ${env('RETRY')}`;
 
 //--format pretty`;this allow console.log statement
 //  --format progress-bar`; this option shows a progress bar in the console
