@@ -1,6 +1,6 @@
 Feature: As a User I can intract with windows
 
-    @dev
+    
     @smoke
     @regression
     Scenario: I should intract and assert on new windows

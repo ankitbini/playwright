@@ -16,6 +16,7 @@ Then(
         const elementIdentifire = getElementLocator( page, elementKey, globalConfig)
         await waitFor(async () => {
             const elementText = await page.textContent(elementIdentifire)
+            //console.log(`Actual text: ${elementText?.trim()}`)
             return elementText?.includes(expectedElementText) === !negate;
         });
     }
@@ -85,6 +86,24 @@ Then(
         await waitFor(async () => {
             const isElementEnabled = await page.isEnabled(elementIdentifire)
             return isElementEnabled === !negate;
+        });
+    }
+)
+
+Then(
+    /^the "([0-9]+th|[0-9]+st|[0-9]+nd|[0-9]+rd)" "([^"]*)" should( not)? contain the text "(.*)"$/,
+    async function(this: ScenarioWorld,elementPosition: string, elementKey: ElementKey,negate: boolean, expectedElementText: string) {
+        const {
+            screen: { page },
+            globalConfig,
+        } = this;
+        console.log(`the ${elementPosition} ${elementKey} should${negate ? " not" : ""} contain the text ${expectedElementText}`)
+        const elementIdentifire = getElementLocator( page, elementKey, globalConfig)
+        const pageIndex = Number(elementPosition.match(/\d/g)?.join("")) - 1
+        await waitFor(async () => {
+            const elementText = await page.textContent(`${elementIdentifire}>>nth=${pageIndex}`)
+            //console.log(`Actual text: ${elementText?.trim()}`)
+            return elementText?.includes(expectedElementText) === !negate;
         });
     }
 )

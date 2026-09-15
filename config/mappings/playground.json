@@ -22,5 +22,9 @@
     "delete": "[data-id=\"delete-button\"]",
     "full name label": "[data-id=\"full-name-label\"]",
     "new tab": "[data-id=\"new-tab-button\"]",
-    "new window": "[data-id=\"open-window-button\"]"
+    "new window": "[data-id=\"open-window-button\"]",
+    "primary": "[data-id=\"primary-button\"]",
+    "secondary": "[data-id=\"secondary-button\"]",
+    "third": "[data-id=\"third-button\"]",
+    "my button": "[data-id=\"my-button\"]"
 }

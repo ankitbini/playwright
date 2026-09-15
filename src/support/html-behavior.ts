@@ -80,3 +80,12 @@ export const inputValueOnPage = async (
     await pages[pageIndex].focus(elementIdentifire);
     await pages[pageIndex].fill(elementIdentifire, inputValue);
 }
+
+export const clickElementAtIndex = async (
+    page: Page,
+    elementIdentifire: ElementLocator,
+    elementIndex: number
+): Promise<void> => {
+    const elements = await page.$(`${elementIdentifire}>>nth=${elementIndex}`);
+    await elements?.click();
+}
