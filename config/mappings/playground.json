@@ -26,5 +26,8 @@
     "primary": "[data-id=\"primary-button\"]",
     "secondary": "[data-id=\"secondary-button\"]",
     "third": "[data-id=\"third-button\"]",
-    "my button": "[data-id=\"my-button\"]"
+    "my button": "[data-id=\"my-button\"]",
+    "basic table": "[data-id=\"basic-table\"]",
+    "toggle one": "[data-id=\"switch-one\"]",
+    "toggle two": "[data-id=\"switch-two\"]"
 }

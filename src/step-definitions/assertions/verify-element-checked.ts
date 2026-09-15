@@ -6,7 +6,7 @@ import { waitFor } from "../../support/wait-for-behavior.js";
 
 
 Then(
-    /^the "([^"]*)" (?:radio button|check box) should( not)? be checked$/,
+    /^the "([^"]*)" (?:radio button|check box|toggle|switch) should( not)? be checked$/,
     async function(this: ScenarioWorld, elementKey: ElementKey, negate: boolean) {
         const {
             screen: {page},
