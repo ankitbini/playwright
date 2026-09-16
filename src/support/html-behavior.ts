@@ -89,3 +89,12 @@ export const clickElementAtIndex = async (
     const elements = await page.$(`${elementIdentifire}>>nth=${elementIndex}`);
     await elements?.click();
 }
+
+export const getAttributeValue = async (
+    page: Page,
+    elementIdentifire: ElementLocator,
+    attributeName: string
+): Promise<string | null> => {
+    const attributeValue = await page.locator(elementIdentifire).getAttribute(attributeName);
+    return attributeValue;
+}
