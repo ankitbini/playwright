@@ -4,7 +4,7 @@ import type { GlobalConfig, PageId } from "../env/global.js";
 export const navigateToPage = async (
     page: Page,
     pageId: PageId,
-    { pagesConfig, hostsConfig}: GlobalConfig
+    { pagesConfig, hostsConfig }: GlobalConfig
 ): Promise<void> => {
     const {
         UI_AUTOMATION_HOST: hostName = 'localhost'
@@ -13,10 +13,10 @@ export const navigateToPage = async (
     const hostPath = hostsConfig[`${hostName}`]
     //console.log(`Navigating to host: ${hostName}, hostPath: ${hostPath}`)
     const url = new URL(hostPath)
-   // console.log(`Constructed URL: ${url}`)
+    // console.log(`Constructed URL: ${url}`)
     const pagesConfigItem = pagesConfig[pageId]
     url.pathname = pagesConfigItem.route
-   // console.log("pages route", url.pathname)
+    // console.log("pages route", url.pathname)
     await page.goto(url.href)
 }
 
@@ -35,9 +35,9 @@ export const currentPathMatchesPageId = (
     pageId: PageId,
     globalConfig: GlobalConfig
 ): boolean => {
-   const { pathname: currentPath } = new URL(page.url())
-   //console.log(`Current path: ${currentPath}`)
-   return pathMatchesPageId( currentPath, pageId, globalConfig)
+    const { pathname: currentPath } = new URL(page.url())
+    //console.log(`Current path: ${currentPath}`)
+    return pathMatchesPageId(currentPath, pageId, globalConfig)
 };
 
 export const getCurrentPageId = (
@@ -57,3 +57,8 @@ export const getCurrentPageId = (
     }
     return currentPageId
 }
+
+export const reloadPage =
+    async (page: Page): Promise<void> => {
+        await page.reload()
+    }

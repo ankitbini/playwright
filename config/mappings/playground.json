@@ -15,12 +15,6 @@
     "grey": "[data-id=\"grey-radio-button\"]",
     "red": "[data-id=\"red-radio-button\"]",
     "basic iframe": "[id=\"basic-iframe\"]",
-    "gender label": "[data-id=\"gender-label\"]",
-    "address label": "[data-id=\"address-label\"]",
-    "address": "[data-id=\"address\"]",
-    "edit": "[data-id=\"edit-button\"]",
-    "delete": "[data-id=\"delete-button\"]",
-    "full name label": "[data-id=\"full-name-label\"]",
     "new tab": "[data-id=\"new-tab-button\"]",
     "new window": "[data-id=\"open-window-button\"]",
     "primary": "[data-id=\"primary-button\"]",
@@ -43,5 +37,10 @@
     "second value": "[data-id=\"second-value\"]",
     "third value": "[data-id=\"third-value\"]",
     "fourth value": "[data-id=\"fourth-value\"]",
-    "fifth value": "[data-id=\"fifth-value\"]"
+    "fifth value": "[data-id=\"fifth-value\"]",
+    "drop down button": "[data-id=\"drop-down-button\"]",
+    "drop down profile": "[data-id=\"drop-down-profile\"]",
+    "drop down my account": "[data-id=\"drop-down-my-account\"]",
+    "drop down logout": "[data-id=\"drop-down-logout\"]",
+    "age": "[name=\"age\"]"
 }
