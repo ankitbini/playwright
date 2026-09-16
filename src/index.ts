@@ -9,7 +9,10 @@ import type {
     PageElementMappings,
 } from './env/global.js'
 
-dotenv.config({path: env('COMMON_CONFIG_FILE')})
+const environment = process.env.NODE_ENV ?? 'localhost'
+
+dotenv.config({ path: resolve(process.cwd(), 'env/common.env') })
+dotenv.config({ path: resolve(process.cwd(), `env/${environment}.env`) })
 
 const hostsConfig: HostsConfig = getJsonFromFile(env('HOSTS_URLS_PATH'))
 //console.log("Loaded hosts configuration:", hostsConfig)
