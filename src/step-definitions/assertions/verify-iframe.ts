@@ -15,9 +15,10 @@ Then(
         console.log(`the ${elementKey} on the ${iframeName} iframe should ${negate ? "not" : ""} be displayed`)
         const elementIdentifire = getElementLocator( page, elementKey, globalConfig)
          const iframeIdentifire = getElementLocator( page, iframeName, globalConfig)
-         const elementIframe = await getIframeElement(page, iframeIdentifire)
+         
 
         await waitFor(async () => {
+            const elementIframe = await getIframeElement(page, iframeIdentifire)
             const isElementVisiable = (await elementIframe?.$(elementIdentifire)) != null
             return isElementVisiable === !negate;
         });
@@ -35,9 +36,10 @@ Then(
         console.log(`the ${elementKey} on the ${iframeName} iframe should ${negate ? "not" : ""} contain the text "${expectedText}"`)
         const elementIdentifire = getElementLocator( page, elementKey, globalConfig)
          const iframeIdentifire = getElementLocator( page, iframeName, globalConfig)
-         const elementIframe = await getIframeElement(page, iframeIdentifire)
+         
 
         await waitFor(async () => {
+            const elementIframe = await getIframeElement(page, iframeIdentifire)
             const elementText = await elementIframe?.textContent(elementIdentifire)
             return elementText?.includes(expectedText) === !negate;
         });
@@ -54,9 +56,10 @@ Then(
         console.log(`the ${elementKey} on the ${iframeName} iframe should ${negate ? "not" : ""} equal the text "${expectedText}"`)
         const elementIdentifire = getElementLocator( page, elementKey, globalConfig)
          const iframeIdentifire = getElementLocator( page, iframeName, globalConfig)
-         const elementIframe = await getIframeElement(page, iframeIdentifire)
+         
 
         await waitFor(async () => {
+            const elementIframe = await getIframeElement(page, iframeIdentifire)
             const elementText = await elementIframe?.textContent(elementIdentifire)
             return (elementText === expectedText) === !negate;
         });

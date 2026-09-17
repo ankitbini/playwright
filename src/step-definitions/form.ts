@@ -7,6 +7,7 @@ import type { ElementKey } from "../env/global.js"
 import { 
     inputValue, 
     selectValue } from "../support/html-behavior.js";
+import { parseInput } from "../support/input-helper.js";
 
 
 Then(
@@ -21,7 +22,8 @@ Then(
         await waitFor(async () => {
             const result = await page.waitForSelector(elementIdentifire, { state: "visible" })
             if(result){
-                await inputValue(page, elementIdentifire, input)
+                const parsedInput = parseInput(input, globalConfig)
+                await inputValue(page, elementIdentifire, parsedInput)
             }
             //await page.waitForTimeout(3000)
             return result

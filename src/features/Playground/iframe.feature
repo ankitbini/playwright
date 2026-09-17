@@ -7,6 +7,7 @@ Feature: As a User I can intract with IFrames
         Given I am on the "home" page
         And I click on the "playground" button
         When I am directed to the "playground" page
+        And I scroll to the "basic iframe"
         And I fill in the "search" input on the "basic iframe" iframe with "Abraham Perry"
         And the "searched contact" on the "basic iframe" iframe should be displayed
         And the "full name label" on the "basic iframe" iframe should contain the text "Abraham Perry"

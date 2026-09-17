@@ -1,6 +1,6 @@
 Feature: As a User I can intract with buttons
 
-    @dev
+    
     @smoke
     @regression
     Scenario: I should intract and assert on buttons at index

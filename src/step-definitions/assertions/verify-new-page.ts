@@ -14,7 +14,7 @@ Then(
         console.log(`the ${elementPosition} tab|window should ${negate ? "not" : ""} contain the title "${expectedTitle}"`)
         // Implement the logic to verify the tab title based on its position
         const pageIndex = Number(elementPosition.match(/\d/g)?.join("")) - 1
-        await page.waitForTimeout(1000) // Adjust the timeout as needed
+        await page.waitForTimeout(2000) // Adjust the timeout as needed
         await waitFor(async () => {
             let pages = context.pages()
             const pageTitle = await pages[pageIndex]?.title()

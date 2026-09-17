@@ -7,6 +7,7 @@ import type {
     PagesConfig,
     HostsConfig,
     PageElementMappings,
+    EmailsConfig,
 } from './env/global.js'
 
 const environment = process.env.NODE_ENV ?? 'localhost'
@@ -17,7 +18,9 @@ dotenv.config({ path: resolve(process.cwd(), `env/${environment}.env`) })
 const hostsConfig: HostsConfig = getJsonFromFile(env('HOSTS_URLS_PATH'))
 //console.log("Loaded hosts configuration:", hostsConfig)
 const pagesConfig: PagesConfig = getJsonFromFile(env('PAGES_URLS_PATH'))
-//.log("Loaded pages configuration:", pagesConfig)
+//console.log("Loaded pages configuration:", pagesConfig)
+const emailsConfig: EmailsConfig = getJsonFromFile(env('EMAILS_CONFIG_PATH'))
+
 const mappingDirectory = resolve(process.cwd(), env('PAGE_ELEMENTS_PATH'))
 const mappingFiles = fs.readdirSync(mappingDirectory)
 const pageElementMappings: PageElementMappings = mappingFiles.reduce(
@@ -32,6 +35,7 @@ const pageElementMappings: PageElementMappings = mappingFiles.reduce(
 const worldParameters: GlobalConfig = {
     hostsConfig,
     pagesConfig,
+    emailsConfig,
     pageElementMappings,
 }
 

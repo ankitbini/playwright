@@ -3,7 +3,7 @@ export const waitFor = async<T>(
     options?: { timeout?: number; wait?:number }
 ): Promise<T> => {
     
-    const { timeout = 10000, wait = 2000 } = options || {};
+    const { timeout = 20000, wait = 2000 } = options || {};
 
     const sleep = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
     const startDate = new Date();

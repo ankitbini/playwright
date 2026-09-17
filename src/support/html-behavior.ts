@@ -39,6 +39,7 @@ export const getValue = async (
     page: Page,
     elementIdentifire: ElementLocator,
 ): Promise<string | null> => {
+    await page.waitForSelector(elementIdentifire);
     await page.focus(elementIdentifire);
     const value =  await page.$eval<string, HTMLInputElement>(elementIdentifire, el => {
         return el.value;
@@ -97,4 +98,12 @@ export const getAttributeValue = async (
 ): Promise<string | null> => {
     const attributeValue = await page.locator(elementIdentifire).getAttribute(attributeName);
     return attributeValue;
+}
+
+export const scrollIntoView = async (
+    page: Page, 
+    elementIdentifire: ElementLocator
+): Promise<void> => {
+    const element = page.locator(elementIdentifire);
+    await element.scrollIntoViewIfNeeded();
 }

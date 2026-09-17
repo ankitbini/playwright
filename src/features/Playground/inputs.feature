@@ -1,8 +1,7 @@
 Feature: As a User I can intract with autocomplete inputs
 
     
-    @smoke
-    @regression
+    
     Scenario: I should intract and assert with autocomplete inputs
         Given I am on the "home" page
         And I click on the "playground" button
