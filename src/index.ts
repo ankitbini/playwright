@@ -9,6 +9,7 @@ import type {
     PageElementMappings,
     EmailsConfig,
 } from './env/global.js'
+import { generateCucumberRuntimeTag } from './support/tag-helper.js'
 
 const environment = process.env.NODE_ENV ?? 'localhost'
 
@@ -20,6 +21,14 @@ const hostsConfig: HostsConfig = getJsonFromFile(env('HOSTS_URLS_PATH'))
 const pagesConfig: PagesConfig = getJsonFromFile(env('PAGES_URLS_PATH'))
 //console.log("Loaded pages configuration:", pagesConfig)
 const emailsConfig: EmailsConfig = getJsonFromFile(env('EMAILS_CONFIG_PATH'))
+
+const getEnvList = (): string[] => {
+    const envList = Object.keys(hostsConfig)
+    if(envList.length === 0) {
+        throw Error(`No environments found in your ${env('HOSTS_URLS_PATH')}`)
+    }
+    return envList
+}
 
 const mappingDirectory = resolve(process.cwd(), env('PAGE_ELEMENTS_PATH'))
 const mappingFiles = fs.readdirSync(mappingDirectory)
@@ -53,8 +62,8 @@ const common = `./src/features/**/*.feature \
 //--format pretty`;this allow console.log statement
 //  --format progress-bar`; this option shows a progress bar in the console
 
-const dev = `${common} --tags '@dev'`
-const smoke = `${common} --tags '@smoke'`
-const regression = `${common} --tags '@regression'`
+const dev = generateCucumberRuntimeTag(common, environment, getEnvList(), 'dev')
+const smoke = generateCucumberRuntimeTag(common, environment, getEnvList(), 'smoke')
+const regression = generateCucumberRuntimeTag(common, environment, getEnvList(), 'regression')
 
 export { dev, smoke, regression }
