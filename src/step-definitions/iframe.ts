@@ -4,6 +4,7 @@ import type { ScenarioWorld } from "./setup/world.js";
 import { waitFor } from "../support/wait-for-behavior.js";
 import { getElementLocator } from "../support/web-element-helper.js";
 import { getIframeElement, inputValueOnIframe } from "../support/html-behavior.js";
+import { logger } from "../logger/index.js";
 
 
 Then(
@@ -13,7 +14,7 @@ Then(
             screen: {page},
             globalConfig,
         } = this;
-        console.log(`I fill in the ${elementKey} input on the ${iframeName} iframe with ${inputValue}`)
+        logger.log(`I fill in the ${elementKey} input on the ${iframeName} iframe with ${inputValue}`)
         
          const elementIdentifire = getElementLocator( page, elementKey, globalConfig)
          const iframeIdentifire = getElementLocator( page, iframeName, globalConfig)

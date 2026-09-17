@@ -1,3 +1,5 @@
+import { logger } from "../logger/index.js";
+
 export const waitFor = async<T>(
     predicate: () => T |Promise<T>,
     options?: { timeout?: number; wait?:number }
@@ -13,7 +15,7 @@ export const waitFor = async<T>(
         if (result) return result;
 
         await sleep(wait);
-        console.log(`Waiting ${wait}ms before retrying...`);
+        logger.log(`Waiting ${wait}ms before retrying...`);
     }
     throw new Error(`Timeout of ${timeout}ms exceeded while waiting for condition`);
 };

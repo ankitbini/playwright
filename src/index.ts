@@ -17,9 +17,9 @@ dotenv.config({ path: resolve(process.cwd(), 'env/common.env') })
 dotenv.config({ path: resolve(process.cwd(), `env/${environment}.env`) })
 
 const hostsConfig: HostsConfig = getJsonFromFile(env('HOSTS_URLS_PATH'))
-//console.log("Loaded hosts configuration:", hostsConfig)
+//logger.log("Loaded hosts configuration:", hostsConfig)
 const pagesConfig: PagesConfig = getJsonFromFile(env('PAGES_URLS_PATH'))
-//console.log("Loaded pages configuration:", pagesConfig)
+//logger.log("Loaded pages configuration:", pagesConfig)
 const emailsConfig: EmailsConfig = getJsonFromFile(env('EMAILS_CONFIG_PATH'))
 
 const getEnvList = (): string[] => {
@@ -59,7 +59,7 @@ const common = `./src/features/**/*.feature \
     --parallel ${env('PARALLEL')} \
     --retry ${env('RETRY')}`;
 
-//--format pretty`;this allow console.log statement
+//--format pretty`;this allow logger.log statement
 //  --format progress-bar`; this option shows a progress bar in the console
 
 const dev = generateCucumberRuntimeTag(common, environment, getEnvList(), 'dev')

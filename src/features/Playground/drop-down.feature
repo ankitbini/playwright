@@ -1,6 +1,5 @@
 Feature: As a User I can intract with drop down
 
-
     @smoke
     @regression
     Scenario: I should intract and assert on drop down

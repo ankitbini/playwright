@@ -2,10 +2,11 @@ import { Before, After, setDefaultTimeout } from "@cucumber/cucumber";
 import type { ITestCaseHookParameter } from "@cucumber/cucumber"
 import { ScenarioWorld } from "./world.js";
 import { env, envNumber } from '../../env/parseEnv.js'
+import { logger } from "../../logger/index.js";
 
 setDefaultTimeout(envNumber('SCRIPT_TIMEOUT'))
 Before(async function(this: ScenarioWorld, scenario) {
-    console.log(`Running cucumber scenario ${scenario.pickle.name}`)
+    logger.log(`Running cucumber scenario ${scenario.pickle.name}`)
     const contextOptions= {
         ignoreHTTPSErrors: true,
         recordVideo: {

@@ -4,6 +4,7 @@ import { getElementLocator } from "../../support/web-element-helper.js";
 import type { ScenarioWorld } from "../setup/world.js";
 import { waitFor } from "../../support/wait-for-behavior.js";
 import { getIframeElement } from "../../support/html-behavior.js";
+import { logger } from "../../logger/index.js";
 
 Then(
     /^the "([^"]*)" on the "([^"]*)" iframe should( not)? be displayed$/,
@@ -12,7 +13,7 @@ Then(
             screen: { page },
             globalConfig,
         } = this;
-        console.log(`the ${elementKey} on the ${iframeName} iframe should ${negate ? "not" : ""} be displayed`)
+        logger.log(`the ${elementKey} on the ${iframeName} iframe should ${negate ? "not" : ""} be displayed`)
         const elementIdentifire = getElementLocator( page, elementKey, globalConfig)
          const iframeIdentifire = getElementLocator( page, iframeName, globalConfig)
          
@@ -33,7 +34,7 @@ Then(
             screen: { page },
             globalConfig,
         } = this;
-        console.log(`the ${elementKey} on the ${iframeName} iframe should ${negate ? "not" : ""} contain the text "${expectedText}"`)
+        logger.log(`the ${elementKey} on the ${iframeName} iframe should ${negate ? "not" : ""} contain the text "${expectedText}"`)
         const elementIdentifire = getElementLocator( page, elementKey, globalConfig)
          const iframeIdentifire = getElementLocator( page, iframeName, globalConfig)
          
@@ -53,7 +54,7 @@ Then(
             screen: { page },
             globalConfig,
         } = this;
-        console.log(`the ${elementKey} on the ${iframeName} iframe should ${negate ? "not" : ""} equal the text "${expectedText}"`)
+        logger.log(`the ${elementKey} on the ${iframeName} iframe should ${negate ? "not" : ""} equal the text "${expectedText}"`)
         const elementIdentifire = getElementLocator( page, elementKey, globalConfig)
          const iframeIdentifire = getElementLocator( page, iframeName, globalConfig)
          

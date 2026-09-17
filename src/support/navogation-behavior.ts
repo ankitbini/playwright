@@ -11,12 +11,12 @@ export const navigateToPage = async (
     } = process.env
 
     const hostPath = hostsConfig[`${hostName}`]
-    //console.log(`Navigating to host: ${hostName}, hostPath: ${hostPath}`)
+    //logger.log(`Navigating to host: ${hostName}, hostPath: ${hostPath}`)
     const url = new URL(hostPath)
-    // console.log(`Constructed URL: ${url}`)
+    // logger.log(`Constructed URL: ${url}`)
     const pagesConfigItem = pagesConfig[pageId]
     url.pathname = pagesConfigItem.route
-    // console.log("pages route", url.pathname)
+    // logger.log("pages route", url.pathname)
     await page.goto(url.href)
 }
 
@@ -36,7 +36,7 @@ export const currentPathMatchesPageId = (
     globalConfig: GlobalConfig
 ): boolean => {
     const { pathname: currentPath } = new URL(page.url())
-    //console.log(`Current path: ${currentPath}`)
+    //logger.log(`Current path: ${currentPath}`)
     return pathMatchesPageId(currentPath, pageId, globalConfig)
 };
 
@@ -45,12 +45,12 @@ export const getCurrentPageId = (
     globalConfig: GlobalConfig
 ): PageId => {
     const { pagesConfig } = globalConfig
-    //console.log(`current pagesConfig: ${JSON.stringify(pagesConfig)}`)
+    //logger.log(`current pagesConfig: ${JSON.stringify(pagesConfig)}`)
     const pageConfigPageIds = Object.keys(pagesConfig)
-    //console.log(`pageConfigPageIds: ${JSON.stringify(pageConfigPageIds)}`)
+    //logger.log(`pageConfigPageIds: ${JSON.stringify(pageConfigPageIds)}`)
     const { pathname: currentPath } = new URL(page.url())
     const currentPageId = pageConfigPageIds.find(pageId => pathMatchesPageId(currentPath, pageId, globalConfig))
-    //console.log(`currentPageId: ${currentPageId}`)
+    //logger.log(`currentPageId: ${currentPageId}`)
     if (!currentPageId) {
         throw Error(`Failed to get page name from current route : ${pagesConfig}, \
             available pages: ${JSON}`)

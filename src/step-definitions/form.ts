@@ -8,6 +8,7 @@ import {
     inputValue, 
     selectValue } from "../support/html-behavior.js";
 import { parseInput } from "../support/input-helper.js";
+import { logger } from "../logger/index.js";
 
 
 Then(
@@ -17,7 +18,7 @@ Then(
             screen: { page },
             globalConfig,
         } = this;
-        console.log(`I am filling in the ${elementKey} input with ${input}`)
+        logger.log(`I am filling in the ${elementKey} input with ${input}`)
         const elementIdentifire = getElementLocator( page, elementKey, globalConfig)
         await waitFor(async () => {
             const result = await page.waitForSelector(elementIdentifire, { state: "visible" })
@@ -40,7 +41,7 @@ Then(
             screen: { page },
             globalConfig,
         } = this;
-        console.log(`I am selecting the ${option} option from the ${elementKey} dropdown`)
+        logger.log(`I am selecting the ${option} option from the ${elementKey} dropdown`)
         const elementIdentifire = getElementLocator( page, elementKey, globalConfig)
         await waitFor(async () => {
             const result = await page.waitForSelector(elementIdentifire, { state: "visible" })

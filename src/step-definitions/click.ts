@@ -4,6 +4,7 @@ import type { ScenarioWorld } from "./setup/world.js";
 import { waitFor } from "../support/wait-for-behavior.js";
 import { getElementLocator } from "../support/web-element-helper.js";
 import { clickElement, clickElementAtIndex } from "../support/html-behavior.js";
+import { logger } from "../logger/index.js";
 
 When(
     /^I click on the "([^"]*)" (?:button|link|icon|element)$/,
@@ -12,7 +13,7 @@ When(
             screen: {page},
             globalConfig,
         } = this;
-        console.log(`I click the ${elementKey} (?:button|link|icon|element)`)
+        logger.log(`I click the ${elementKey} (?:button|link|icon|element)`)
         
          const elementIdentifire = getElementLocator( page, elementKey, globalConfig)
         await waitFor(async () => {
@@ -35,7 +36,7 @@ When(
             screen: {page},
             globalConfig,
         } = this;
-        console.log(`I click the ${elementIndex} ${elementKey} (?:button|link|icon|element)`)
+        logger.log(`I click the ${elementIndex} ${elementKey} (?:button|link|icon|element)`)
         
          const elementIdentifire = getElementLocator( page, elementKey, globalConfig)
          const pageIndex = Number(elementIndex.match(/\d/g)?.join("")) - 1

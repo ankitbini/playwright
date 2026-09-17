@@ -3,6 +3,7 @@ import type { ElementKey } from "../../env/global.js";
 import { getElementLocator } from "../../support/web-element-helper.js";
 import type { ScenarioWorld } from "../setup/world.js";
 import { waitFor } from "../../support/wait-for-behavior.js";
+import { logger } from "../../logger/index.js";
 
 
 Then(
@@ -12,7 +13,7 @@ Then(
             screen: {page},
             globalConfig,
         } = this;
-        console.log(`The ${elementKey} check box | radio button should${negate ? " not" : ""} be checked`)
+        logger.log(`The ${elementKey} check box | radio button should${negate ? " not" : ""} be checked`)
         
         const elementIdentifire = getElementLocator( page, elementKey, globalConfig)
         await waitFor(async () => {

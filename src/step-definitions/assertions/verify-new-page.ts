@@ -3,6 +3,7 @@ import type { ElementKey } from "../../env/global.js";
 import { getElementLocator } from "../../support/web-element-helper.js";
 import type { ScenarioWorld } from "../setup/world.js";
 import { waitFor } from "../../support/wait-for-behavior.js";
+import { logger } from "../../logger/index.js";
 
 Then(
     /^the "([0-9]+th|[0-9]+st|[0-9]+nd|[0-9]+rd)" (?:tab|window) should( not)? contain the title "(.*)"$/,
@@ -11,7 +12,7 @@ Then(
             screen: { page, context },
             globalConfig,
         } = this;
-        console.log(`the ${elementPosition} tab|window should ${negate ? "not" : ""} contain the title "${expectedTitle}"`)
+        logger.log(`the ${elementPosition} tab|window should ${negate ? "not" : ""} contain the title "${expectedTitle}"`)
         // Implement the logic to verify the tab title based on its position
         const pageIndex = Number(elementPosition.match(/\d/g)?.join("")) - 1
         await page.waitForTimeout(2000) // Adjust the timeout as needed
@@ -30,7 +31,7 @@ Then(
             screen: { page, context },
             globalConfig,
         } = this;
-        console.log(`the ${elementKey} on the ${elementPosition} tab|window should ${negate ? "not" : ""} be displayed`)
+        logger.log(`the ${elementKey} on the ${elementPosition} tab|window should ${negate ? "not" : ""} be displayed`)
         // Implement the logic to verify the element visibility based on its position
         const pageIndex = Number(elementPosition.match(/\d/g)?.join("")) - 1
         const elementIdentifire = getElementLocator( page, elementKey, globalConfig)
@@ -49,7 +50,7 @@ Then(
             screen: { page, context },
             globalConfig,
         } = this;
-        console.log(`the ${elementKey} on the ${elementPosition} tab|window should ${negate ? "not" : ""} contain the text "${expectedText}"`)
+        logger.log(`the ${elementKey} on the ${elementPosition} tab|window should ${negate ? "not" : ""} contain the text "${expectedText}"`)
         // Implement the logic to verify the element text based on its position
         const pageIndex = Number(elementPosition.match(/\d/g)?.join("")) - 1
         const elementIdentifire = getElementLocator( page, elementKey, globalConfig)
@@ -68,7 +69,7 @@ Then(
             screen: { page, context },
             globalConfig,
         } = this;
-        console.log(`the ${elementKey} on the ${elementPosition} tab|window should ${negate ? "not" : ""} equal the text "${expectedText}"`)
+        logger.log(`the ${elementKey} on the ${elementPosition} tab|window should ${negate ? "not" : ""} equal the text "${expectedText}"`)
         // Implement the logic to verify the element text based on its position
         const pageIndex = Number(elementPosition.match(/\d/g)?.join("")) - 1
         const elementIdentifire = getElementLocator( page, elementKey, globalConfig)

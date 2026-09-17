@@ -3,6 +3,7 @@ import type { ElementKey } from "../env/global.js";
 import { getElementLocator } from "../support/web-element-helper.js";
 import type { ScenarioWorld } from "./setup/world.js";
 import { waitFor } from "../support/wait-for-behavior.js";
+import { logger } from "../logger/index.js";
 
 Then(/^I retrieve "([^"]*)" text and store it as "([^"]*)" in global variables$/,
     async function (this: ScenarioWorld, elementKey: ElementKey, variableName: string) {
@@ -11,7 +12,7 @@ Then(/^I retrieve "([^"]*)" text and store it as "([^"]*)" in global variables$/
             globalConfig,
             globalVariables
         } = this;
-        console.log(`I retrieved text from element "${elementKey}" and stored it as "${variableName}" in global variables`);
+        logger.log(`I retrieved text from element "${elementKey}" and stored it as "${variableName}" in global variables`);
         const elementIdentifier = getElementLocator(page, elementKey, globalConfig);
         await waitFor(async () => {
             const result = await page.waitForSelector(elementIdentifier, {

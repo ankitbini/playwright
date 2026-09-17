@@ -4,6 +4,7 @@ import type { ElementKey } from "../env/global.js";
 import { getElementLocator } from "../support/web-element-helper.js";
 import { waitFor } from "../support/wait-for-behavior.js";
 import { inputValueOnPage } from "../support/html-behavior.js";
+import { logger } from "../logger/index.js";
 
 
 Then(
@@ -13,7 +14,7 @@ Then(
             screen: { page, context },
             globalConfig,
         } = this;
-        console.log(`I am filling in the ${elementKey} input on the ${elementPosition} tab|window with ${inputValue}`)
+        logger.log(`I am filling in the ${elementKey} input on the ${elementPosition} tab|window with ${inputValue}`)
         const pageIndex = Number(elementPosition.match(/\d/g)?.join("")) - 1
         const elementIdentifire = getElementLocator( page, elementKey, globalConfig)
         await waitFor(async () => {
